@@ -18,11 +18,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
 @Data
+@Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Table(name="emptable")
@@ -39,7 +38,7 @@ public class Employee {
 	@Column(name="lastname")
 	private String lastname;
 	
-	@Column(name="emaild")
+	@Column(name="emaild", nullable=false,unique=true)
 	private String emaild;
 	
 	
