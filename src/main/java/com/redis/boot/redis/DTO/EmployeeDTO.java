@@ -12,11 +12,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class EmployeeDTO {
 	
 	
-	private Long Employeeid;
+	private Long empid;
 	
 	private String firstname;
 	

@@ -18,18 +18,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Data
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name="emptable")
+@Table(name="emptablenew")
 public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
 	private long empid;
 	
 	@Column(name="firstname")
@@ -39,7 +38,7 @@ public class Employee {
 	private String lastname;
 	
 	@Column(name="emaild", nullable=false,unique=true)
-	private String emaild;
+	private String emailid;
 	
 	
 	
