@@ -1,5 +1,7 @@
 package com.redis.boot.redis.DTO;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -12,7 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-public class EmployeeDTO {
+public class EmployeeDTO implements Serializable {
 	
 	
 	private Long empid;

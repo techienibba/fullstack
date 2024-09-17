@@ -1,6 +1,8 @@
 package com.redis.boot.redis.entity;
 
 
+import java.io.Serializable;
+
 import org.springframework.data.annotation.Immutable;
 
 import jakarta.persistence.Column;
@@ -25,7 +27,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Table(name="emptablenew")
-public class Employee {
+public class Employee implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

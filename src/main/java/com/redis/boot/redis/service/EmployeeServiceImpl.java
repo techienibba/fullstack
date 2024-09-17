@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.redis.boot.redis.DTO.EmployeeDTO;
@@ -20,6 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private emprepository emprepository;
 
 	@Override
+	@CachePut("myput")
 	public EmployeeDTO createemployee(EmployeeDTO employee) {
 		// TODO Auto-generated method stub
 		               Employee empcreate= EmployeeMapper.EmployeeDTOToEmployee(employee);
@@ -43,9 +47,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
+	@Cacheable("mycache")
 	public List<EmployeeDTO> getemployees() {
 		// TODO Auto-generated method stub
+		System.out.println("Entered FindAll");
+		
 		List<Employee> emplist=emprepository.findAll();
+		
+		System.out.println("Checking for EmpMapper");
 		List<EmployeeDTO> checklist=emplist.stream().map((emp)->EmployeeMapper.EmployeeToEmployeeDTO(emp)).collect(Collectors.toList());
 		return checklist;
 	}
@@ -65,6 +74,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
+	@CacheEvict
 	public void deleteemployee(Long id) {
 		// TODO Auto-generated method stub
 		Employee delemp=emprepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee does not exist with id"+""+id));
